@@ -13,8 +13,7 @@ void displayEmpDetails(struct Emp arr[], int size) {
         printf("Name: %s\n", arr[j].name);
         printf("ID: %d\n", arr[j].id);
         printf("-----------------\n");
-    }
-}
+    }}
 int main() {
     struct Emp e4Arr[3]; // Array of 3 struct Emp 
     for (int i = 0; i < sizeof(e4Arr) / sizeof(e4Arr[0]); ++i) {
@@ -24,9 +23,7 @@ int main() {
         printf("\nEnter ID: ");
         scanf("%d", &e4Arr[i].id);
     }
-
     displayEmpDetails(e4Arr, sizeof(e4Arr) / sizeof(e4Arr[0]));
-
     return 0;
 }
 

@@ -8,7 +8,6 @@ struct Emp{
 char name[10];
 int id;
 };
-
 void displayEmpDetails(struct Emp *ptr, int totalEmp) {
     printf("\nEmployee Details : ");
     for (int j = 0; j < totalEmp; j++) {
