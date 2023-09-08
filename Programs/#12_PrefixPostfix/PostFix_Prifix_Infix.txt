@@ -1,0 +1,89 @@
+Postfix Evaluation:
+Postfix notation, also known as Reverse Polish Notation (RPN), is a way to represent mathematical expressions without the need for parentheses to indicate the order of operations. In postfix notation, operators come after their operands. To evaluate a postfix expression, you can use a stack data structure.
+
+Here's an algorithm for evaluating a postfix expression:
+
+1. Initialize an empty stack to store operands.
+2. Scan the expression from left to right.
+3. For each element in the expression:
+   a. If it's an operand (a number), push it onto the stack.
+   b. If it's an operator (+, -, *, /, etc.):
+      i. Pop the top two elements from the stack as operands.
+      ii. Apply the operator to these operands.
+      iii. Push the result back onto the stack.
+4. After scanning the entire expression, the result should be the only element left on the stack.
+
+Example:
+Let's evaluate the postfix expression "3 4 * 2 /" using the algorithm:
+1. Initialize an empty stack.
+2. Scan the expression from left to right:
+   a. "3" is an operand, so push it onto the stack.
+   b. "4" is an operand, so push it onto the stack.
+   c. "*" is an operator, so pop 4 and 3 from the stack, calculate 4 * 3 = 12, and push 12 onto the stack.
+   d. "2" is an operand, so push it onto the stack.
+   e. "/" is an operator, so pop 2 and 12 from the stack, calculate 12 / 2 = 6, and push 6 onto the stack.
+3. After scanning the entire expression, the result (6) is the only element left on the stack.
+---------------------------------------------------------------------
+Prefix Evaluation:
+Prefix notation, also known as Polish Notation, is similar to postfix notation, but operators come before their operands. To evaluate a prefix expression, you can also use a stack.
+
+Here's an algorithm for evaluating a prefix expression:
+
+1. Initialize an empty stack to store operands.
+2. Scan the expression from right to left.
+3. For each element in the expression:
+   a. If it's an operand (a number), push it onto the stack.
+   b. If it's an operator (+, -, *, /, etc.):
+      i. Pop the top two elements from the stack as operands.
+      ii. Apply the operator to these operands.
+      iii. Push the result back onto the stack.
+4. After scanning the entire expression, the result should be the only element left on the stack.
+
+Example:
+Let's evaluate the prefix expression "/ * 4 3 2" using the algorithm:
+1. Initialize an empty stack.
+2. Scan the expression from right to left:
+   a. "2" is an operand, so push it onto the stack.
+   b. "3" is an operand, so push it onto the stack.
+   c. "4" is an operand, so push it onto the stack.
+   d. "*" is an operator, so pop 4 and 3 from the stack, calculate 4 * 3 = 12, and push 12 onto the stack.
+   e. "/" is an operator, so pop 2 and 12 from the stack, calculate 12 / 2 = 6, and push 6 onto the stack.
+3. After scanning the entire expression, the result (6) is the only element left on the stack.
+---------------------------------------------------------------------
+Infix to Postfix Conversion:
+Infix notation is the standard way to write mathematical expressions, with operators between operands and the use of parentheses to indicate the order of operations. Converting infix expressions to postfix notation can simplify the evaluation process and remove the need for parentheses.
+
+Here's an algorithm for converting an infix expression to postfix notation using the Shunting Yard algorithm:
+
+1. Initialize an empty stack for operators and an empty output queue for the postfix expression.
+2. Scan the infix expression from left to right.
+3. For each element in the expression:
+   a. If it's an operand (a number), add it to the output queue.
+   b. If it's an operator (+, -, *, /, etc.):
+      i. Pop operators from the stack and add them to the output queue until you encounter an operator with lower precedence or an open parenthesis '(' or the stack is empty.
+      ii. Push the current operator onto the stack.
+   c. If it's an open parenthesis '(', push it onto the stack.
+   d. If it's a closing parenthesis ')':
+      i. Pop operators from the stack and add them to the output queue until you encounter an open parenthesis '('.
+      ii. Pop and discard the open parenthesis '(' from the stack.
+4. After scanning the entire expression, pop any remaining operators from the stack and add them to the output queue.
+5. The output queue now contains the postfix expression.
+
+Example:
+Let's convert the infix expression "3 + 4 * 2 / ( 1 - 5 )" to postfix notation using the Shunting Yard algorithm:
+1. Initialize an empty stack and an empty output queue.
+2. Scan the infix expression from left to right:
+   a. "3" is an operand, so add it to the output queue.
+   b. "+" is an operator, so push it onto the stack.
+   c. "4" is an operand, so add it to the output queue.
+   d. "*" has higher precedence than "+," so push it onto the stack.
+   e. "2" is an operand, so add it to the output queue.
+   f. "/" has the same precedence as "*", so pop "*" and add it to the output queue, then push "/" onto the stack.
+   g. "(" is an open parenthesis, so push it onto the stack.
+   h. "1" is an operand, so add it to the output queue.
+   i. "-" has lower precedence than "/", so pop "/" and add it to the output queue, then push "-" onto the stack.
+   j. "5" is an operand, so add it to the output queue.
+   k. ")" is a closing parenthesis, so pop "-" and add it to the output queue, then pop "(" and discard it.
+3. After scanning the entire expression, pop any remaining operators from the stack and add them to the output queue. In this case, we pop "+" and add it to the output queue.
+4. The output queue now contains the postfix expression: "3 4 2 * 1 5 - / +"
+--------------------------------------------------------------------------
