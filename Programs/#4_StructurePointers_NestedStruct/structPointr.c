@@ -14,7 +14,6 @@ void displayEmpDetails(struct Emp *ptr, int totalEmp) {
         printf("\nEmployee Name : %s ID : %d", (ptr + j)->name, (ptr + j)->id);
     }
 }
-
 int main(){
 struct Emp *e4Ptr;
 int totalEmp;
